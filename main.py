@@ -37,9 +37,9 @@ def main(argv=None):
     display = display_data.DisplayData(data)
     # distance_overlay(display, "RBigToe", "LBigToe")
     # display.distance_overlay()
-    global app  # This line saved my life. It does not work without it
+    global app  # This line - It does not work without it - Thread issues if deleted
     app = test_gui.QApplication([])
-    # app.aboutToQuit.connect(app.deleteLater) <- f*** this ***** line cost me at least 60 years of well being ***  *** it works without it ***
+    # app.aboutToQuit.connect(app.deleteLater) <- Don't use this line. It's bad and causes alternate threads to not be terminate correctly
     # gui = interface.GUI(display)
     gui = test_gui.GUI(display)
     gui.show()
